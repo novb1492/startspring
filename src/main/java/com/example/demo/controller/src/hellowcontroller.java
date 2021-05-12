@@ -5,6 +5,7 @@ package com.example.demo.controller.src;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -13,6 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class hellowcontroller {
   
+  @PostMapping("posthello")
+  public String posthello(@RequestParam("name")String name,Model model)
+  {
+    System.out.println(name+"name");
+    model.addAttribute("post", name);
+
+    return "posthello";
+
+  }
   @GetMapping("hello")
     public String name(Model model) {
     model.addAttribute("data", "hello");
